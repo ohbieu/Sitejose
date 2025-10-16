@@ -1,0 +1,118 @@
+/* Modernized dark theme */
+:root{
+  --bg:#07121a;
+  --panel:#0f1a26;
+  --muted:#9fb0c8;
+  --text:#dbe9f8;
+  --accent-1:#2a6cff;
+  --accent-2:#1458d6;
+  --success:#8ce99a;
+  --danger:#ff6b6b;
+  --glass:rgba(255,255,255,0.03);
+}
+
+*{box-sizing:border-box;font-family:Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial, sans-serif}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),#04101a 140%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px;
+}
+
+/* Header */
+.site-header{
+  background:linear-gradient(90deg,#071827 0%,var(--panel) 100%);
+  color:var(--text);
+  padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(4px);
+}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo a{color:var(--text);text-decoration:none;font-weight:700;font-size:20px}
+
+nav{display:flex;align-items:center;gap:10px}
+nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+nav a.btn{background:linear-gradient(180deg,var(--accent-1),var(--accent-2));color:#fff;border:1px solid rgba(0,0,0,0.2)}
+nav a:hover{background:var(--glass);color:var(--text)}
+.greeting{color:#9fc5ff;margin-right:6px;font-weight:600}
+.avatar{width:40px;height:40px;border-radius:999px;background:#0b2633;display:inline-block;object-fit:cover;border:2px solid rgba(255,255,255,0.04)}
+
+/* Search / forms in header (if any) */
+form.form-inline{display:flex;gap:8px;align-items:center}
+form.form-inline input[type=text],form.form-inline select{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:8px 10px;border-radius:8px}
+
+/* Improved select appearance for better contrast in dropdown */
+select{appearance:none;-webkit-appearance:none;-moz-appearance:none;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.04));padding-right:36px;position:relative}
+select option{color:#0b1220;background:#fff;padding:6px}
+/* custom arrow using a pseudo-element on a wrapper - provide fallback for simple selects */
+.select-wrap{position:relative;display:inline-block}
+.select-wrap::after{content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:10px;height:10px;border-left:2px solid rgba(255,255,255,0.7);border-bottom:2px solid rgba(255,255,255,0.7);transform:translateY(-50%) rotate(-45deg);pointer-events:none;opacity:0.9}
+
+/* When the select itself is clicked, force a light background for clarity on supported browsers */
+select:focus,select:active{background:#fff;color:#0b1220;border-color:var(--accent-1)}
+
+/* Grid and cards */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:18px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.12));border:1px solid rgba(255,255,255,0.03);border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(2,6,23,0.6);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.7)}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+.card .title{font-weight:700;margin-top:10px;color:var(--text);font-size:15px}
+.card .meta{font-size:13px;color:var(--muted);margin-top:6px}
+.card .actions{display:flex;gap:8px;margin-top:12px;align-items:center}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;background:linear-gradient(180deg,var(--accent-1),var(--accent-2));color:#fff;border-radius:10px;text-decoration:none;border:1px solid rgba(0,0,0,0.3);font-weight:700}
+.btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text);font-weight:600}
+.btn:active{transform:translateY(1px)}
+.toggle-fav{margin-left:auto;font-size:20px;cursor:pointer;color:#ffd36b}
+
+.btn.danger{background:linear-gradient(180deg,#ff6b6b,#e55353);border-color:rgba(0,0,0,0.25)}
+
+/* Forms */
+.form-row{margin-bottom:14px}
+input[type=text],select,input[type=number],input[type=email],input[type=password],textarea{width:100%;padding:12px;border:1px solid rgba(255,255,255,0.04);border-radius:10px;background:rgba(255,255,255,0.02);color:var(--text);outline:none}
+input:focus,textarea:focus{box-shadow:0 0 0 4px rgba(42,108,255,0.08);border-color:var(--accent-1)}
+
+/* Footer */
+.site-footer{background:transparent;color:var(--muted);padding:18px 0;margin-top:36px;border-top:1px solid rgba(255,255,255,0.02)}
+.site-footer .container{display:flex;justify-content:center}
+
+/* small utilities */
+.badge{background:#143444;color:#dff3ff;padding:6px 10px;border-radius:999px;font-size:12px}
+.muted{color:var(--muted)}
+.error{background:rgba(255,107,107,0.12);color:var(--danger);padding:10px;border-radius:8px}
+
+/* file input styling */
+input[type=file][name="avatar"]:not(:first-of-type){display:none !important}
+.file-input-wrapper{display:flex;align-items:center;gap:10px;position:relative}
+.file-input-button{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;background:linear-gradient(180deg,var(--accent-1),var(--accent-2));color:#fff;border-radius:8px;border:1px solid rgba(0,0,0,0.12);cursor:pointer}
+.file-input-button svg{width:18px;height:18px}
+.file-name{color:var(--muted);font-size:13px;margin-left:8px}
+.file-input-hidden{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0;cursor:pointer}
+
+/* Utility helpers */
+.text-center{text-align:center}
+.grid-2{display:grid;grid-template-columns:1fr 320px;gap:18px}
+
+/* Responsive tweaks */
+@media(max-width:800px){
+  .site-header .container{flex-direction:column;align-items:flex-start}
+  nav{flex-wrap:wrap}
+  .grid-2{grid-template-columns:1fr}
+  .card img{height:160px}
+}
+
+/* Flash / toast */
+#flash-toast{position:fixed;right:20px;top:20px;z-index:9999;padding:12px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#fff;box-shadow:0 8px 30px rgba(2,6,23,0.6);font-weight:700;opacity:0;transform:translateY(-8px);transition:opacity .28s ease,transform .28s ease}
+#flash-toast.success{background:linear-gradient(90deg,#2ecc71,#10b981)}
+#flash-toast.error{background:linear-gradient(90deg,#ff6b6b,#f87171)}
+#flash-toast.show{opacity:1;transform:translateY(0)}
+
+
